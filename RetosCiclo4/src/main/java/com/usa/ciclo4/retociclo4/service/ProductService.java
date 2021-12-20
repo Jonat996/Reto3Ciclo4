@@ -40,8 +40,8 @@ public class ProductService {
                 if (product.getCategory() != null) {
                     dbProduct.get().setCategory(product.getCategory());
                 }
-                if (product.getPresentation() != null) {
-                    dbProduct.get().setPresentation(product.getPresentation());
+                if (product.getMaterial() != null) {
+                    dbProduct.get().setMaterial(product.getMaterial());
                 }
                 if (product.getDescription() != null) {
                     dbProduct.get().setDescription(product.getDescription());
