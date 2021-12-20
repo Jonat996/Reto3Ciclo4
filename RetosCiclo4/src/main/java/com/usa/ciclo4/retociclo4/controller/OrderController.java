@@ -1,8 +1,6 @@
 package com.usa.ciclo4.retociclo4.controller;
 
 import com.usa.ciclo4.retociclo4.model.Order;
-import com.usa.ciclo4.retociclo4.model.Product;
-import com.usa.ciclo4.retociclo4.model.User;
 import com.usa.ciclo4.retociclo4.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,4 +49,27 @@ public class OrderController {
     public Optional<Order> getOrder(@PathVariable("id") Integer id){
         return orderService.getOrder(id);
     }
+
+    @GetMapping("/salesman/{id}")
+    public List<Order> salesManExist(@PathVariable("id") int id){
+        return orderService.getOrderBySalesManId(id);
+    }
+
+    @GetMapping("/state/{status}/{id}")
+    public List<Order> salesManIdAndStatusExist(@PathVariable("id") int id, @PathVariable("status") String status){
+        return orderService.getOrderBySalesManIdAndStatus(id, status);
+    }
+
+    /*@GetMapping("/date/{registerDay}/{id}")
+    public List<Order> RegisterDayAndSalesManIdExist(@PathVariable("id") int id, @PathVariable("registerDay") Date registerDay){
+        return orderService.getOrderByRegisterDayAndSalesManId(registerDay, id);
+    }*/
+
+    @GetMapping("/date/{registerDay}/{id}")
+    public List<Order> getByRegisterDayAndSalesManId(@PathVariable("registerDay")String  registerDay,@PathVariable("id") Integer id){
+        return orderService.getByRegisterDayAndSalesManId(registerDay, id);
+    }
+
+
+
 }

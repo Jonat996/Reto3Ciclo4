@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/cosmetics")
+@RequestMapping("/api/cleaningproduct")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET,
         RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ProductController {
@@ -43,5 +43,15 @@ public class ProductController {
     @GetMapping("/{reference}")
     public Optional<Product> getProduct(@PathVariable("reference") String reference){
         return productService.getProduct(reference);
+    }
+
+    @GetMapping("/price/{price}")
+    public List<Product> getByPrice(@PathVariable("price") double price){
+        return productService.getByPrice(price);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<Product> getByDescriptionContains(@PathVariable("description") String description){
+        return productService.getByDescriptionContains(description);
     }
 }
